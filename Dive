@@ -1,0 +1,21 @@
+┌─────────────────────────────────────────────────────────────┐
+│                 Jetpack Compose (Material 3)                │
+│  [Search Bar]  [Playlists]  [Minimal Player]  [Lyrics View] │
+└──────────────────────────────┬──────────────────────────────┘
+                               │ StateFlow / Events
+┌──────────────────────────────▼──────────────────────────────┐
+│                    ViewModel & Repositories                 │
+│  - MusicRepo  - LyricsRepo (LRCLib / YT)  - BackupManager   │
+└──────────────┬───────────────────────────────┬──────────────┘
+               │                               │
+┌──────────────▼─────────────┐   ┌─────────────▼──────────────┐
+│   Media3 (ExoPlayer)       │   │      Room Database         │
+│ - CacheDataSource          │   │ - Playlists & Tracks       │
+│ - MediaSessionService      │   │ - Local Lyrics Overrides   │
+│ - SimpleCache (Disk/Cache) │   │ - Play History & Favorites │
+└──────────────┬─────────────┘   └─────────────┬──────────────┘
+               │                               │
+┌──────────────▼─────────────┐   ┌─────────────▼──────────────┐
+│ YouTube Internal Client API│   │ Storage Access Framework   │
+│ (Innertune Parser / Extr.) │   │ (JSON Backup & Restore)    │
+└────────────────────────────┘   └────────────────────────────┘
